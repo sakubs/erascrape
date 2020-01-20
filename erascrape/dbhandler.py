@@ -16,11 +16,16 @@ def create_table(conn):
         id integer PRIMARY_KEY, 
         name text NOT NULL, 
         start_date text NOT NULL, 
-        end_date text
-    )"""
+        end_date text)"""
+    
     try:
         c = conn.cursor()
         c.execute(sql)
     except sqlite3.Error as e:
         print(e)
 
+def insert_era(conn, record):
+    cur = conn.cursor()
+    sql = "INSERT OR IGNORE INTO japanese_eras ({seq})".format(seq=','.join(['?']*len(record)))
+    cur.execute(sql, record)
+    return cur.lastrowid

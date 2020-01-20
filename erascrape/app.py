@@ -9,15 +9,17 @@ def run():
     soup = BeautifulSoup(response.content, 'html.parser')
     
     eras = soup.find_all(class_='era')
+    cleaned_eras = []
     for era in eras:
         
         for child in era.parent.parent.children:
             try:
-                print(child.text)
+                cleaned_eras.append(child.text.strip())
             except AttributeError:
-                print(child)
+                continue
 
+    print(cleaned_eras)
     conn = create_connection()
     create_table(conn)
-    
+
     
