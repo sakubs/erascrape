@@ -2,10 +2,10 @@ import sqlite3
 
 ERASCRAPE_DB = 'resources/erascrapedb.db3'
 
-def create_connection():
+def create_connection(dbpath):
     conn = None
     try:
-        conn = sqlite3.connect(ERASCRAPE_DB)
+        conn = sqlite3.connect(dbpath)
         return conn
     except sqlite3.Error as e:
         print(e)
@@ -29,4 +29,10 @@ def insert_era(conn, record):
     sql = "INSERT OR IGNORE INTO japanese_eras VALUES ({seq})".format(seq=','.join(['?']*len(record)))
     cur.execute(sql, record)
 
+    return cur.fetchall()
+
+def find_era_by_date(conn, querydate):
+    cur = conn.cursor()
+
+    sql = "SELECT * WHERE "
     return cur.fetchall()
