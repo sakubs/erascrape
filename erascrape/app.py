@@ -1,6 +1,3 @@
-import requests
-
-from bs4 import BeautifulSoup
 from dbhandler import create_connection, create_table, insert_era
 
 
@@ -8,8 +5,6 @@ def run():
     """
     Main entry point for the app.
     """
-    response = requests.get('http://houshinji.org/calendar.html')
-    soup = BeautifulSoup(response.content, 'html.parser')
     
     eras = soup.find_all(class_='era')
     cleaned_eras = []
@@ -27,9 +22,9 @@ def run():
         cleaned_eras.append(cleaned_era)
         era_id += 1
 
-    conn = create_connection()
-    with conn:
-        create_table(conn)
+    # conn = create_connection()
+    # with conn:
+    #     create_table(conn)
 
-        for era in cleaned_eras:
-            insert_era(conn, era)
+    #     for era in cleaned_eras:
+    #         insert_era(conn, era)
