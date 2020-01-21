@@ -12,3 +12,4 @@ There are database helper scripts for SQLite if you so choose to go that route.
 
 # Installation
 Run the setup script.
+(Not tested yet)
