@@ -32,5 +32,4 @@ def run():
         create_table(conn)
 
         for era in cleaned_eras:
-            print(era)
-            #insert_era(conn, era)
+            insert_era(conn, era)

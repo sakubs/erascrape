@@ -26,6 +26,7 @@ def create_table(conn):
 
 def insert_era(conn, record):
     cur = conn.cursor()
-    sql = "INSERT OR IGNORE INTO japanese_eras ({seq})".format(seq=','.join(['?']*len(record)))
+    sql = "INSERT OR IGNORE INTO japanese_eras VALUES ({seq})".format(seq=','.join(['?']*len(record)))
     cur.execute(sql, record)
-    return cur.lastrowid
+
+    return cur.fetchall()
