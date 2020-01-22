@@ -31,6 +31,8 @@ def parse_era_info(soup):
     Prerequisites: make_soup has successfully returned a soup that is not 
     None
     """
+    if soup is None:
+        raise AttributeError("Soup was None type")
     eras = soup.find_all(class_='era')
     cleaned_eras = []
     
