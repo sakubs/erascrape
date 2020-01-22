@@ -5,7 +5,6 @@ def run():
     """
     Main entry point for the app.
     """
-    
     eras = soup.find_all(class_='era')
     cleaned_eras = []
     

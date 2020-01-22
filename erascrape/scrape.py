@@ -11,6 +11,11 @@ def make_soup(siteurl):
 
     returns: the beautiful soup tree.
     """
-    response = requests.get(siteurl)
+    try:
+        response = requests.get(siteurl)
+    except requests.exceptions.ConnectionError as e:
+        print("Passed a bad url")
+        return None
+    
     soup = BeautifulSoup(response.content, 'html.parser')
     return soup

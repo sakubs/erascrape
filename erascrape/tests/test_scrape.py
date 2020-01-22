@@ -30,8 +30,9 @@ class TestScrape(unittest.TestCase):
         # bad url
         url = 'http://housinji.org/calendar.html'
         soup = make_soup(url)
-
-    
+        # For a bad url the soup should be None
+        self.assertEqual(soup, None)
+        
 
 
 if __name__ == "__main__":
