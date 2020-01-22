@@ -42,6 +42,14 @@ class TestScrape(unittest.TestCase):
         era_info = parse_era_info(soup)
         print(era_info)
 
+    def test_parse_era_info_bad_url(self):
+        """
+        Integration test for test_parse_era when a bad url is passed.
+        """
+        soup = make_soup('http://housinji.org/calendar.html')
+        era_info = parse_era_info(soup)
+        print(era_info)
+
 
 if __name__ == "__main__":
     unittest.main()
