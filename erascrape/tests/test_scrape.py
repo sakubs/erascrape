@@ -2,7 +2,7 @@ import unittest
 import sys
 sys.path.append('..')
 
-from scrape import make_soup
+from scrape import make_soup, parse_era_info
 
 
 class TestScrape(unittest.TestCase):
@@ -33,6 +33,14 @@ class TestScrape(unittest.TestCase):
         # For a bad url the soup should be None
         self.assertEqual(soup, None)
         
+    def test_parse_era_info(self):
+        """
+        Want to test that all of the era names, start dates, and end dates are 
+        returned from the function.
+        """
+        soup = make_soup()
+        era_info = parse_era_info(soup)
+        print(era_info)
 
 
 if __name__ == "__main__":

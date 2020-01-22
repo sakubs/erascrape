@@ -31,4 +31,16 @@ def parse_era_info(soup):
     Prerequisites: make_soup has successfully returned a soup that is not 
     None
     """
-    pass
+    eras = soup.find_all(class_='era')
+    cleaned_eras = []
+    
+    for era in eras:
+        # Need to strip out whitespace and get only the tags with relevant text.
+        cleaned_era = []
+        for child in era.parent.parent.children:
+            try:
+                cleaned_era.append(child.text.strip())
+            except AttributeError:
+                continue
+        cleaned_eras.append(cleaned_era)
+    return cleaned_eras
