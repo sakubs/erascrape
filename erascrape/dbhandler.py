@@ -23,7 +23,8 @@ def create_table(conn):
         name text NOT NULL, 
         start_date text NOT NULL, 
         end_date text, 
-        id integer PRIMARY_KEY)"""
+        id integer PRIMARY_KEY, 
+        UNIQUE (start_date, end_date))"""
     
     try:
         c = conn.cursor()
@@ -35,7 +36,8 @@ def insert_era(conn, record):
     cur = conn.cursor()
     sql = "INSERT OR IGNORE INTO japanese_eras VALUES ({seq})".format(seq=','.join(['?']*len(record)))
     cur.execute(sql, record)
-    return cur.lastrowid
+    cur.close()
+    conn.commit()
 
 def find_era_by_date(conn, querydate):
     cur = conn.cursor()
