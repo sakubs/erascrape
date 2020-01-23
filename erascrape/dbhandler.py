@@ -35,7 +35,10 @@ def create_table(conn):
 def insert_era(conn, record):
     cur = conn.cursor()
     sql = "INSERT OR IGNORE INTO japanese_eras VALUES ({seq})".format(seq=','.join(['?']*len(record)))
-    cur.execute(sql, record)
+    try:
+        cur.execute(sql, record)
+    except sqlite3.OperationalError as e:
+        print(e)
     cur.close()
     conn.commit()
 
