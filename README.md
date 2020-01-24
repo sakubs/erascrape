@@ -11,8 +11,8 @@ choose to do with it after that is up to you.
 There are database helper scripts for SQLite if you so choose to go that route.
 
 This library is meant to be simple and have one purpose, get the names, start 
-and end dates for Japanese eras to help with developing larger projects that 
-require this functionality.
+and end dates for Japanese eras from a complete and accurate source in order 
+to help with developing larger projects that require this functionality.
 
 # Installation
 
