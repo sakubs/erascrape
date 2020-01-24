@@ -7,5 +7,6 @@ setup(name='erascrape',
     author='Brian Sakurada', 
     author_email='sakuradabs@gmail.com', 
     license='MIT', 
+    requires=['requests', 'sqlite3', 'bs4'],
     packages=['erascrape',], 
 )
